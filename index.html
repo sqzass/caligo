@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aero">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>CALIGO — Free AI Telegram & Discord Bot Manager</title>
+  <meta name="description" content="CALIGO gives your Telegram and Discord bots a free AI brain. No API keys, no subscriptions, no paywalls.">
+  <meta property="og:title" content="CALIGO — Free AI Bot Manager">
+  <meta property="og:description" content="AI Telegram & Discord bots with free streaming AI, image understanding, slash commands, and encrypted sync — no API keys.">
+  <meta property="og:image" content="https://user.uploads.dev/file/031caa498afbf2bb90887d311611de52.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:,">
+  <style>
+    :root, [data-theme="aero"] {
+      --text: #173a5e; --heading: #0f2f52; --muted: #4a6b8f; --muted2: #7391b3;
+      --blue: #2f6fd0; --blue-deep: #1c4f9e; --green: #2f7d2a; --amber: #c77700; --red: #c73538;
+      --display: "Trebuchet MS", "Segoe UI", -apple-system, sans-serif;
+      --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --hairline: rgba(28, 79, 158, .14); --hairline2: rgba(28, 79, 158, .26); --blueprint: rgba(28, 79, 158, .1);
+      --radius: 12px; --radius-sm: 8px;
+      --shadow: 0 14px 34px -16px rgba(20, 60, 120, .42); --accent: var(--blue); --accent2: #6aa5ea;
+      --border: rgba(28, 79, 158, .18); --border2: rgba(28, 79, 158, .3);
+      --bg-image: url("https://frutigeraeroarchive.org/images/wallpapers/asadal_stock/asadal_stock_17.jpg");
+      --bg-stack: var(--bg-image), radial-gradient(64% 42% at 72% 4%, rgba(255,255,255,.38), transparent 70%), linear-gradient(180deg, #2b66b0 0%, #4d8fd6 32%, #8fc0ec 60%, #cfe7fa 82%, #8ecb62 100%);
+      --surface-bg: linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.5));
+      --surface-border: rgba(255, 255, 255, .78); --surface-shadow: inset 0 1px 0 rgba(255,255,255,.9), var(--shadow);
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.76));
+      --card-border: rgba(255, 255, 255, .95);
+      --card-shadow: inset 0 1px 0 #ffffff, 0 0 0 1px var(--blueprint), 0 10px 24px -14px rgba(20,60,120,.32);
+      --card-shadow-hover: inset 0 1px 0 #ffffff, 0 0 0 1px rgba(47, 111, 208, .25), 0 18px 34px -14px rgba(20,60,120,.45);
+      --btn-bg: linear-gradient(180deg, #ffffff 0%, #f2f8fe 48%, #d9eafb 52%, #eaf4fd 100%);
+      --btn-bg-hover: linear-gradient(180deg, #ffffff 0%, #eaf4fe 48%, #cde3f8 52%, #e2f0fd 100%);
+      --btn-border: #9dbfe3; --btn-border-hover: #6fa3d9; --btn-text: #14477e;
+      --btn-primary-bg: linear-gradient(180deg, #74b0f4 0%, #3d80dd 48%, #2a63bd 52%, #4a86e0 100%);
+      --btn-primary-bg-hover: linear-gradient(180deg, #86bcf7 0%, #4b8ce4 48%, #3370c9 52%, #5a92e6 100%);
+      --btn-primary-border: var(--blue-deep); --btn-primary-text: #ffffff;
+      --btn-shadow: inset 0 1px 0 #ffffff, 0 3px 8px -2px rgba(20,60,120,.28);
+      --notice-bg: rgba(255, 255, 255, .7); --notice-warn-bg: #fff7e8; --notice-good-bg: #f1faeb;
+      --hover-bg: rgba(255, 255, 255, .65);
+      font-size: 14.5px; font-family: var(--body); color: var(--text); line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    [data-theme="mono"] {
+      --text: #27272a; --heading: #09090b; --muted: #52525b; --muted2: #71717a;
+      --blue: #18181b; --blue-deep: #09090b; --green: #3f7a4f; --amber: #9a7b21; --red: #a83a3a;
+      --display: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --hairline: rgba(9, 9, 9, .1); --hairline2: rgba(9, 9, 9, .18); --blueprint: rgba(9, 9, 9, .03);
+      --radius: 8px; --radius-sm: 6px; --shadow: 0 0 0 transparent; --accent: var(--text);
+      --accent2: #3f3f46; --border: rgba(9, 9, 9, .14); --border2: rgba(9, 9, 9, .24);
+      --panel: #fafafa; --panel2: #ffffff; --panel3: rgba(9, 9, 9, .04); --bg2: #f4f4f5;
+      --bg-image: none; --bg-stack: linear-gradient(#f4f4f5, #f4f4f5);
+      --surface-bg: #ffffff; --surface-border: rgba(9, 9, 9, .1); --surface-shadow: 0 0 0 transparent;
+      --card-bg: #ffffff; --card-border: rgba(9, 9, 9, .1); --card-shadow: none; --card-shadow-hover: none;
+      --btn-bg: #ffffff; --btn-bg-hover: #f4f4f5; --btn-border: rgba(9, 9, 9, .16); --btn-border-hover: rgba(9, 9, 9, .32);
+      --btn-text: #18181b; --btn-shadow: none; --btn-shadow-hover: none;
+      --btn-primary-bg: #18181b; --btn-primary-bg-hover: #3f3f46; --btn-primary-border: #18181b; --btn-primary-text: #ffffff;
+      --notice-bg: #fafafa; --notice-warn-bg: #f5f1e3; --notice-good-bg: #eef4ef; --notice-err-bg: #f7ebeb;
+      --hover-bg: rgba(9, 9, 9, .05); --tile-bg: #fafafa;
+      font-size: 14.5px; font-family: var(--body); color: var(--text); line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { margin: 0; min-height: 100vh; background: var(--bg-stack); background-size: cover; background-attachment: fixed; font-family: var(--body); color: var(--text); }
+    * { box-sizing: border-box; }
+    a { color: var(--accent); }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 24px 18px 64px; }
+    .header { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: var(--surface-bg); border: 1px solid var(--surface-border); box-shadow: var(--surface-shadow); border-radius: var(--radius); margin: 22px auto; max-width: 920px; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 20px; font-weight: 600; color: var(--heading); text-decoration: none; }
+    .nav { display: flex; gap: 4px; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 13.5px; padding: 6px 14px; border-radius: var(--radius-sm); transition: all .15s; }
+    .nav a:hover { background: var(--hover-bg); color: var(--text); }
+    .hero { text-align: center; padding: 34px 14px 28px; }
+    .hero h1 { font-family: var(--display); font-size: clamp(2rem, 4.5vw, 2.9rem); color: var(--heading); margin: 0 0 6px; line-height: 1.15; }
+    .hero p.lead { color: var(--muted2); margin: 0 auto 4px; font-size: 17px; max-width: 640px; }
+    .hero .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: inherit; font-size: 13.5px; font-weight: 500; padding: 9px 18px; border-radius: var(--radius-sm); border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--btn-text); text-decoration: none; cursor: pointer; box-shadow: var(--btn-shadow); transition: all .15s; }
+    .btn:hover { background: var(--btn-bg-hover); border-color: var(--btn-border-hover); box-shadow: var(--btn-shadow-hover); }
+    .btn-primary { background: var(--btn-primary-bg); border-color: var(--btn-primary-border); color: var(--btn-primary-text); box-shadow: none; }
+    .btn-primary:hover { background: var(--btn-primary-bg-hover); }
+    .btn-lg { padding: 12px 22px; font-size: 15px; }
+    .btn-sm { padding: 5px 12px; font-size: 12.5px; }
+    .grid { display: grid; gap: var(--radius); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin: 8px 0 6px; }
+    .card { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); border-radius: var(--radius); padding: 22px; transition: box-shadow .15s; }
+    .card:hover { box-shadow: var(--card-shadow-hover); }
+    .card .ic { margin-bottom: 12px; display: flex; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; color: var(--heading); }
+    .card p { color: var(--muted2); font-size: 13.5px; margin: 0 0 14px; line-height: 1.6; }
+    .feats { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
+    .feat { display: flex; gap: 10px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+    .feat b { color: var(--muted2); }
+    .mono { font-family: var(--mono); font-size: 12.5px; }
+    .notice { border-radius: var(--radius-sm); padding: 14px 14px 14px 42px; position: relative; margin: 16px 0; background: var(--notice-bg); border: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--muted2); }
+    .notice.warn { background: var(--notice-warn-bg); border-color: var(--border2); }
+    .notice strong { color: var(--text); }
+    .notice .ic { position: absolute; left: 12px; top: 12px; }
+    .divider { height: 1px; background: var(--hairline); margin: 34px 0; }
+    .section-title { font-family: var(--display); font-size: 22px; color: var(--heading); margin: 38px 0 4px; }
+    .section-sub { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+    .kbd { display: inline-block; background: var(--hover-bg); border: 1px solid var(--border); border-radius: 5px; padding: 2px 8px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+    .tagline { color: var(--amber); font-weight: 600; font-size: 13px; letter-spacing: .03em; }
+    @media (max-width: 620px) { .header-inner { padding: 10px 14px; } }
+  </style>
+</head>
+<body>
+  <div class="header"><div class="header-inner">
+    <a class="logo" href="/">
+      <span class="dot" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v5"/><circle cx="12" cy="17" r="1.5"/></svg></span>
+      CALIGO
+    </a>
+    <nav class="nav">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#discord">Discord</a>
+            <a href="relay/">Relay guide</a>
+      <a href="https://perchance.org/caligo" target="_blank" rel="noopener">Open app</a>
+    </nav>
+  </div></div>
+  <div class="wrap">
+    <div class="hero">
+      <span class="tagline">Free AI bots • Telegram + Discord • No API keys</span>
+      <h1>Give your bots a free AI brain.</h1>
+      <p class="lead">CALIGO is a free, browser-based manager that gives Telegram and Discord bots a streaming AI that remembers conversations, understands images, supports slash commands, and syncs encrypted across devices.</p>
+      <p class="sub">Built on Perchance's free ai-text-plugin. No subscriptions. No credit card. No API keys.</p>
+      <a class="btn btn-primary btn-lg" href="https://perchance.org/caligo" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v-2a6 6 0 0 0-6-6V3h-4v2a6 6 0 0 0-6 6v2"/><path d="M12 22v-7a3 3 0 1 0 0-6v7"/></svg>
+        Open CALIGO on Perchance
+      </a>
+    </div>
+    <div class="section-title" id="features">What you get</div>
+    <p class="section-sub">Everything you need to run an AI-powered Telegram or Discord bot, for free.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></div>
+        <h3>Free AI brain</h3>
+        <p>Every bot gets a free streaming AI that remembers conversations and understands photos. No API keys or credit card required.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Telegram</h3>
+        <p>Full support: groups + moderation, inline mode, Mini Apps, per-language profiles, and multi-device poller leases with no 409 conflicts.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.5A16.4 16.4 0 0 0 16.2 3.2a11.6 11.6 0 0 0-.5 1.1 15.2 15.2 0 0 0-4.5 0 11.6 11.6 0 0 0-.5-1.1A16.4 16.4 0 0 0 6.6 4.5C4 8.3 3.3 12 3.6 15.6a16.6 16.6 0 0 0 5 2.6c.4-.6.8-1.2 1.1-1.9a10.8 10.8 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 10.1 0l.4.3c-.5.3-1.1.6-1.7.8.3.7.7 1.3 1.1 1.9a16.6 16.6 0 0 0 5-2.6c.4-4.2-.6-7.8-3-11.1zM9.7 13.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm4.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></div>
+        <h3>Discord</h3>
+        <p>Real gateway WebSocket, slash commands with user-install scope, and a self-hosted relay to bypass Discord's edge 40333 block.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v5"/><circle cx="12" cy="17" r="1.5"/></svg></div>
+        <h3>Encrypted sync</h3>
+        <p>Your bots follow you across devices through a sync file encrypted with your own passphrase (AES-256-GCM). The coordinator server never sees your tokens.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+        <h3>Scripting</h3>
+        <p>Full JavaScript per bot with library helpers for Telegram, Discord, OpenAI, GitHub, and more. Optional key exposure for trusted code only.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 12h20L12 2z"/><path d="M12 22v-7a3 3 0 1 0 0-6v7"/></svg></div>
+        <h3>Skins &amp; layouts</h3>
+        <p>Three skins (aero, mono, terminal) and four shell layouts, all with a motion toggle and per-session persistence.</p>
+      </div>
+    </div>
+    <div class="section-title" id="how">How it works</div>
+    <p class="section-sub">A note on the one honest thing you need to know before you run a bot.</p>
+    <div class="feats">
+      <div class="feat"><b>Keep a tab open, keep your bot alive.</b> The Perchance sandbox has no network access and no timers, so a bot only answers while this page is open in a browser tab. Close the last tab → every bot pauses. The server holds leases, the activity feed, and your running-intent, so reopening on any device resumes in seconds — no two devices fight over a poller (no 409s).</div>
+      <div class="feat"><b>Tokens never leave your browser.</b> Your bot tokens live in your browser storage and your encrypted sync file. The shared coordinator server never receives them and never even sees your real bot ids — it works from derived hash ids.</div>
+      <div class="feat"><b>Discord sends need a relay you host.</b> Discord's edge blocks the canonical <span class="mono">Authorization: Bot &lt;token&gt;</span> header on write routes through Perchance's proxy (returns 403 code 40333). The app tries alternative spellings, but none satisfies both the edge and Discord's auth parser. A self-hosted relay (Cloudflare Worker, Google Apps Script, or any simple <span class="mono">fetch()</span> host) bypasses it. <a href="relay/">Full deploy guide &rarr;</a></div>
+    </div>
+    <div class="notice">
+      <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <strong>The one caveat everything hinges on:</strong> bots only answer while the manager page is open in a browser tab. The server keeps your leases and running-intent, so reopening resumes instantly. See the <a href="relay/">relay guide</a> for the Discord sending workaround or <a href="https://perchance.org/caligo" target="_blank">open the app</a> to get started in seconds.
+    </div>
+    <div class="section-title" id="discord">Discord sending &amp; the relay</div>
+    <p class="section-sub">The 40333 edge block and what to do about it.</p>
+    <p>Discord's edge WAF refuses requests carrying <span class="mono">Authorization: Bot &lt;token&gt;</span> headers that also target <span class="mono">/channels/*</span> or <span class="mono">/guilds/*</span> write routes when they arrive via Perchance's CORS proxy — it answers <span class="mono">403 {"message":"internal network error","code":40333}</span> before the API ever sees them. Every alternative spelling (<span class="mono">Bearer</span>, <span class="mono">bot</span>, etc.) clears the edge but is rejected by Discord's auth parser with 401. The manager's <b>Test send path</b> flow finds which form Discord accepts — but if it's the canonical <span class="mono">Bot</span> form, you need a self-hosted relay.</p>
+    <div style="text-align: center; margin: 18px 0 10px">
+      <a class="btn btn-primary btn-lg" href="relay/">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M12 17v5"/><circle cx="12" cy="17" r="1.5"/></svg>
+        Deploy your relay now
+      </a>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Open the app</div>
+    <p class="section-sub">CALIGO runs on Perchance. Opening the app below loads it directly in the editor — no install needed.</p>
+    <div style="text-align: center; margin: 30px 0">
+      <a class="btn btn-lg" href="https://perchance.org/caligo" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v-2a6 6 0 0 0-6-6V3h-4v2a6 6 0 0 0-6 6v2"/><path d="M12 22v-7a3 3 0 1 0 0-6v7"/></svg>
+        Open CALIGO on Perchance
+      </a>
+    </div>
+  </div>
+</body>
+</html>
